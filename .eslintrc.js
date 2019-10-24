@@ -31,6 +31,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-console': ['error', { allow: ['tron'] }],
     'react/jsx-props-no-spreading': 0,
+    'react/prop-types': ['error', { ignore: ['navigation'] }],
     //'no-unused-vars': 0,
   },
   settings: {
