@@ -1,8 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import logo from '~/assets/logo.png';
 import Background from '~/components/Background';
+import { signUpRequest } from '~/store/modules/auth/actions';
+
 import {
   Container,
   Form,
@@ -13,9 +16,20 @@ import {
 } from './styles';
 
 export default function Signup({ navigation }) {
+  const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
-  function handleSubmit() {}
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const loading = useSelector(state => state.auth.loading);
+
+  function handleSubmit() {
+    dispatch(signUpRequest(name, email, password));
+  }
+
   return (
     <Background>
       <Container>
@@ -28,6 +42,8 @@ export default function Signup({ navigation }) {
             placeholder="Full name"
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
+            value={name}
+            onChangeText={setName}
           />
           <FormInput
             icon="mail-outline"
@@ -38,6 +54,8 @@ export default function Signup({ navigation }) {
             ref={emailRef}
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
           />
           <FormInput
             icon="lock-outline"
@@ -46,8 +64,12 @@ export default function Signup({ navigation }) {
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
+            value={password}
+            onChangeText={setPassword}
           />
-          <SubmitButton onPress={handleSubmit}>Enter</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Create Account
+          </SubmitButton>
         </Form>
         <SignLink onPress={() => navigation.navigate('SignIn')}>
           <SignLinkText>I already have an account</SignLinkText>

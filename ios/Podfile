@@ -38,6 +38,11 @@ target 'gobarber' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'gobarberTests' do
     inherit! :search_paths
     # Pods for testing
