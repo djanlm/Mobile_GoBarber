@@ -13,3 +13,5 @@ if (__DEV__) {
   tron.clear();
   console.tron = tron;
 }
+
+// adb reverse tcp:9090 tcp:9090 , use this command to connect to reactotron when using android
