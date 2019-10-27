@@ -33,6 +33,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': ['error', { ignore: ['navigation'] }],
     //'no-unused-vars': 0,
+    'react/prop-types': 0,
   },
   settings: {
     'import/resolver': {
