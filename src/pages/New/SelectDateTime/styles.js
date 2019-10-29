@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -11,7 +12,7 @@ export const HourList = styled.FlatList.attrs({
   padding: 0 20px;
 `;
 
-export const Hour = styled.TouchableOpacity`
+export const Hour = styled(RectButton)`
   background: #fff;
   border-radius: 4px;
   padding: 20px;
@@ -24,4 +25,6 @@ export const Hour = styled.TouchableOpacity`
 
 export const Title = styled.Text`
   font-size: 14px;
+  font-weight: bold;
+  color: #333;
 `;
